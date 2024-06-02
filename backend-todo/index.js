@@ -46,11 +46,19 @@ app.get("/login",async (req,res)=>{
             msg : " wrong inputs "
         })
     }else{
+        try{
        const user = await User.findOne({username : paylode.username ,
                                         password : paylode.password
                                 });
+            if(user == null){
+                res.send({msg : "user don't exsit try sigin"})
+            }else{
             res.send(user._id)
+            }
+    }catch{
+        res.status(403).json({msg : "somthing went wrong"})
     }
+}
 });
 
 app.get("/todos",async function(req,res){
