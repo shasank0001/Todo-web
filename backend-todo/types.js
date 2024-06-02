@@ -1,19 +1,23 @@
-import zod from "zod"
+import zod, { boolean } from "zod"
 
 const creattodo = zod.object({
     id : zod.string(),
     title : zod.string(),
-    description : zod.string()
+    description : zod.string(),
+    
 })
 
-const updataTodo = zod.object({
+const reatodo = zod.object({
     id : zod.string()
 })
-
+const updatatodo = zod.object({
+    id : zod.string(),
+    todoid : zod.number()
+})
 const sigin = zod.object({
 
     username : zod.string(),
-    password : zod.string(),
+    password : zod.string()
 })
 
-export { creattodo,updataTodo ,sigin}
+export { creattodo,reatodo, updatatodo,sigin}
