@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { json } from "react-router-dom";
 
 export function CreatTodo({todos , setTodos}){
     const [title,settitle] = useState("");
@@ -18,9 +19,11 @@ export function CreatTodo({todos , setTodos}){
 
             <div className="flex justify-center">
                 <button onClick={()=>{
+                    const id = localStorage.getItem("id");
                  fetch("http://localhost:3000/todos",{
                     method : "POST",
                     body: JSON.stringify({
+                        id : id,
                         title:title,
                         description:description
                     }),
@@ -28,15 +31,12 @@ export function CreatTodo({todos , setTodos}){
                         "content-type":"application/json"
                     }
                 }).then(async function(res){
-                    const json = await res.json();
-                    console.log(json)
+                    const data = await res.json();
+                    console.log(data)
                     settitle("");
                     setdescription("");
+                    setTodos(data)
                 })
-                setTodos([...todos,{
-                    title: title,
-                    description:description
-                }])
                 }} className="bg-purple-600 text-white font-semibold py-2 px-4 rounded-full hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 m-5">
                     add button</button>
             </div>

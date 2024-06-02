@@ -37,7 +37,7 @@ app.post("/sigin",async (req,res)=>{
 }});
 
 
-app.get("/login",async (req,res)=>{
+app.post("/login",async (req,res)=>{
 
     const paylode = req.body
     const parspalylod = sigin.safeParse(paylode)
@@ -51,17 +51,17 @@ app.get("/login",async (req,res)=>{
                                         password : paylode.password
                                 });
             if(user == null){
-                res.send({msg : "user don't exsit try sigin"})
+                res.send({msg : "user don't exsit try sigin",id:0})
             }else{
             res.send(user._id)
             }
     }catch{
-        res.status(403).json({msg : "somthing went wrong"})
+        res.status(405).json({msg : "somthing went wrong"})
     }
 }
 });
 
-app.get("/todos",async function(req,res){
+app.post("/gettodos",async function(req,res){
 
     const palode = req.body
     const parspalylod = reatodo.safeParse(palode)    
