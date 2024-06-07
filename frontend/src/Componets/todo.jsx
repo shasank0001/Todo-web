@@ -18,7 +18,6 @@ export function Todo({ todos, setTodos }) {
       }
 
       const updatedTodo = await response.json();
-      
       setTodos(updatedTodo);
     } catch (error) {
       console.error('Error completing todo:', error);
@@ -36,7 +35,7 @@ export function Todo({ todos, setTodos }) {
             onClick={() => completeTodo(todo.todoid)}
             disabled={todo.completed}
           >
-            {todo.compleated == true ? "completed" : "mark as completed"}
+            {todo.completed == true ? "completed" : "mark as completed"}
           </button>
         </div>
       ))}
