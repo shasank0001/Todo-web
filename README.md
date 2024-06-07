@@ -51,4 +51,4 @@ POST /todos: Create a new todo.
 GET /todos: Retrieve all todos for a user.
 PUT /todos/:id: Mark a todo as completed.
 # Frontend
-The frontend server will run on http://localhost:3000 by default. You can access the user interface in your web browser and interact with the todo application.
+The frontend server will run on http://localhost:5173/ by default. You can access the user interface in your web browser and interact with the todo application.
